@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SysAid.ListadoRiesgo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de riesgos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Codigo Activo
+            @*@Html.DisplayNameFor(model => model.Amenaza.origen)*@
+        </th>
+        <th>
+            Origen
+            @*@Html.DisplayNameFor(model => model.Controles.nombre)*@
+        </th>
+        <th>
+            Amenaza
+            @*@Html.DisplayNameFor(model => model.ListadoActivos.nombreActivo)*@
+        </th>
+        <th>
+            Riesgo
+            @*@Html.DisplayNameFor(model => model.ListadoActivos.nombreActivo)*@
+        </th>
+        <th>
+            Vulnerabilidad
+            @*@Html.DisplayNameFor(model => model.ListadoActivos.nombreActivo)*@
+        </th>
+        <th>
+            Control
+            @*@Html.DisplayNameFor(model => model.Vulnerabilidad.nombre)*@
+        </th>
+        <th>
+            Descripción
+            @*@Html.DisplayNameFor(model => model.Vulnerabilidad.nombre)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ListadoActivos.codigoActivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amenaza.origen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amenaza.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.riesgo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vulnerabilidad.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Controles.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Controles.descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idListadoRiesgo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idListadoRiesgo })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ValoracionActivosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Amenaza">
+    <Key>
+      <PropertyRef Name="idAmenaza" />
+    </Key>
+    <Property Name="idAmenaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="origen" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="probabilidad" Type="float" Nullable="false" />
+    <Property Name="impacto" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AreaActivo">
+    <Key>
+      <PropertyRef Name="idAreaActivo" />
+    </Key>
+    <Property Name="idAreaActivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="area" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Confidencialidad">
+    <Key>
+      <PropertyRef Name="idConfidencialidad" />
+    </Key>
+    <Property Name="idConfidencialidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nivelConfidencialidad" Type="tinyint" Nullable="false" />
+    <Property Name="nivel" Type="varchar" MaxLength="30" />
+    <Property Name="descripcion" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Controles">
+    <Key>
+      <PropertyRef Name="idControl" />
+    </Key>
+    <Property Name="idControl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Disponibilidad">
+    <Key>
+      <PropertyRef Name="idDisponibilidad" />
+    </Key>
+    <Property Name="idDisponibilidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nivelDisponibilidad" Type="tinyint" Nullable="false" />
+    <Property Name="nivel" Type="varchar" MaxLength="15" />
+    <Property Name="descripcion" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Integridad">
+    <Key>
+      <PropertyRef Name="idIntegridad" />
+    </Key>
+    <Property Name="idIntegridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nivelIntegridad" Type="tinyint" Nullable="false" />
+    <Property Name="nivel" Type="varchar" MaxLength="15" />
+    <Property Name="descripcion" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListadoActivos">
+    <Key>
+      <PropertyRef Name="codigoActivo" />
+    </Key>
+    <Property Name="codigoActivo" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="nombreActivo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcionActivo" Type="text" Nullable="false" />
+    <Property Name="propietario" Type="varchar" MaxLength="80" />
+    <Property Name="protector" Type="varchar" MaxLength="80" />
+    <Property Name="tipoActivo" Type="int" />
+    <Property Name="area" Type="int" />
+    <Property Name="integridad" Type="int" />
+    <Property Name="disponibilidad" Type="int" />
+    <Property Name="confidencialidad" Type="int" />
+    <Property Name="justificacion" Type="text" />
+    <Property Name="valoracion" Type="float" />
+  </EntityType>
+  <EntityType Name="ListadoRiesgo">
+    <Key>
+      <PropertyRef Name="idListadoRiesgo" />
+    </Key>
+    <Property Name="idListadoRiesgo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigoActivo" Type="varchar" MaxLength="3" />
+    <Property Name="idVulnerabilidad" Type="int" />
+    <Property Name="idAmenaza" Type="int" />
+    <Property Name="idControl" Type="int" />
+    <Property Name="riesgo" Type="float" />
+  </EntityType>
+  <EntityType Name="TipoActivo">
+    <Key>
+      <PropertyRef Name="idTipoActivo" />
+    </Key>
+    <Property Name="idTipoActivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vulnerabilidad">
+    <Key>
+      <PropertyRef Name="idVulnerabilidad" />
+    </Key>
+    <Property Name="idVulnerabilidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipoActivo" Type="int" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_activo">
+    <End Role="ListadoActivos" Type="Self.ListadoActivos" Multiplicity="0..1" />
+    <End Role="ListadoRiesgo" Type="Self.ListadoRiesgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListadoActivos">
+        <PropertyRef Name="codigoActivo" />
+      </Principal>
+      <Dependent Role="ListadoRiesgo">
+        <PropertyRef Name="codigoActivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_amenaza">
+    <End Role="Amenaza" Type="Self.Amenaza" Multiplicity="0..1" />
+    <End Role="ListadoRiesgo" Type="Self.ListadoRiesgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Amenaza">
+        <PropertyRef Name="idAmenaza" />
+      </Principal>
+      <Dependent Role="ListadoRiesgo">
+        <PropertyRef Name="idAmenaza" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_control">
+    <End Role="Controles" Type="Self.Controles" Multiplicity="0..1" />
+    <End Role="ListadoRiesgo" Type="Self.ListadoRiesgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Controles">
+        <PropertyRef Name="idControl" />
+      </Principal>
+      <Dependent Role="ListadoRiesgo">
+        <PropertyRef Name="idControl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idConfidencialidad">
+    <End Role="Confidencialidad" Type="Self.Confidencialidad" Multiplicity="0..1" />
+    <End Role="ListadoActivos" Type="Self.ListadoActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Confidencialidad">
+        <PropertyRef Name="idConfidencialidad" />
+      </Principal>
+      <Dependent Role="ListadoActivos">
+        <PropertyRef Name="confidencialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idDisponibilidad">
+    <End Role="Disponibilidad" Type="Self.Disponibilidad" Multiplicity="0..1" />
+    <End Role="ListadoActivos" Type="Self.ListadoActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disponibilidad">
+        <PropertyRef Name="idDisponibilidad" />
+      </Principal>
+      <Dependent Role="ListadoActivos">
+        <PropertyRef Name="disponibilidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ididArea">
+    <End Role="AreaActivo" Type="Self.AreaActivo" Multiplicity="0..1" />
+    <End Role="ListadoActivos" Type="Self.ListadoActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreaActivo">
+        <PropertyRef Name="idAreaActivo" />
+      </Principal>
+      <Dependent Role="ListadoActivos">
+        <PropertyRef Name="area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idIntegridad">
+    <End Role="Integridad" Type="Self.Integridad" Multiplicity="0..1" />
+    <End Role="ListadoActivos" Type="Self.ListadoActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Integridad">
+        <PropertyRef Name="idIntegridad" />
+      </Principal>
+      <Dependent Role="ListadoActivos">
+        <PropertyRef Name="integridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_idTipoActivo">
+    <End Role="TipoActivo" Type="Self.TipoActivo" Multiplicity="0..1" />
+    <End Role="ListadoActivos" Type="Self.ListadoActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoActivo">
+        <PropertyRef Name="idTipoActivo" />
+      </Principal>
+      <Dependent Role="ListadoActivos">
+        <PropertyRef Name="tipoActivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Vulne_tipo">
+    <End Role="TipoActivo" Type="Self.TipoActivo" Multiplicity="0..1" />
+    <End Role="Vulnerabilidad" Type="Self.Vulnerabilidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoActivo">
+        <PropertyRef Name="idTipoActivo" />
+      </Principal>
+      <Dependent Role="Vulnerabilidad">
+        <PropertyRef Name="tipoActivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_vulnerable">
+    <End Role="Vulnerabilidad" Type="Self.Vulnerabilidad" Multiplicity="0..1" />
+    <End Role="ListadoRiesgo" Type="Self.ListadoRiesgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vulnerabilidad">
+        <PropertyRef Name="idVulnerabilidad" />
+      </Principal>
+      <Dependent Role="ListadoRiesgo">
+        <PropertyRef Name="idVulnerabilidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ValoracionActivosModelStoreContainer">
+    <EntitySet Name="Amenaza" EntityType="Self.Amenaza" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AreaActivo" EntityType="Self.AreaActivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Confidencialidad" EntityType="Self.Confidencialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Controles" EntityType="Self.Controles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Disponibilidad" EntityType="Self.Disponibilidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Integridad" EntityType="Self.Integridad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListadoActivos" EntityType="Self.ListadoActivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListadoRiesgo" EntityType="Self.ListadoRiesgo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoActivo" EntityType="Self.TipoActivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vulnerabilidad" EntityType="Self.Vulnerabilidad" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_activo" Association="Self.fk_activo">
+      <End Role="ListadoActivos" EntitySet="ListadoActivos" />
+      <End Role="ListadoRiesgo" EntitySet="ListadoRiesgo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_amenaza" Association="Self.fk_amenaza">
+      <End Role="Amenaza" EntitySet="Amenaza" />
+      <End Role="ListadoRiesgo" EntitySet="ListadoRiesgo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_control" Association="Self.fk_control">
+      <End Role="Controles" EntitySet="Controles" />
+      <End Role="ListadoRiesgo" EntitySet="ListadoRiesgo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idConfidencialidad" Association="Self.fk_idConfidencialidad">
+      <End Role="Confidencialidad" EntitySet="Confidencialidad" />
+      <End Role="ListadoActivos" EntitySet="ListadoActivos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idDisponibilidad" Association="Self.fk_idDisponibilidad">
+      <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+      <End Role="ListadoActivos" EntitySet="ListadoActivos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ididArea" Association="Self.fk_ididArea">
+      <End Role="AreaActivo" EntitySet="AreaActivo" />
+      <End Role="ListadoActivos" EntitySet="ListadoActivos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idIntegridad" Association="Self.fk_idIntegridad">
+      <End Role="Integridad" EntitySet="Integridad" />
+      <End Role="ListadoActivos" EntitySet="ListadoActivos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_idTipoActivo" Association="Self.fk_idTipoActivo">
+      <End Role="TipoActivo" EntitySet="TipoActivo" />
+      <End Role="ListadoActivos" EntitySet="ListadoActivos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Vulne_tipo" Association="Self.fk_Vulne_tipo">
+      <End Role="TipoActivo" EntitySet="TipoActivo" />
+      <End Role="Vulnerabilidad" EntitySet="Vulnerabilidad" />
+    </AssociationSet>
+    <AssociationSet Name="fk_vulnerable" Association="Self.fk_vulnerable">
+      <End Role="Vulnerabilidad" EntitySet="Vulnerabilidad" />
+      <End Role="ListadoRiesgo" EntitySet="ListadoRiesgo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,58 @@
+﻿@model SysAid.ListadoRiesgo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ListadoRiesgo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.riesgo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.riesgo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amenaza.origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amenaza.origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Controles.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Controles.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListadoActivos.nombreActivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListadoActivos.nombreActivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vulnerabilidad.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vulnerabilidad.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idListadoRiesgo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

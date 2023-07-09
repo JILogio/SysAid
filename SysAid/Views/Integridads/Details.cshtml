@@ -1,0 +1,42 @@
+﻿@model SysAid.Integridad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Integridad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nivelIntegridad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nivelIntegridad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nivel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idIntegridad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

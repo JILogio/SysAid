@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SysAid.ListadoActivos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Activos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Codigo
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Proceso
+        </th>
+        <th>
+            Propietario
+        </th>
+        <th>
+            Custodio
+        </th>
+        <th>
+            Ubicación
+        </th>
+        <th>
+            Confidencialidad
+        </th>
+        <th>
+            Disponibilidad
+        </th>
+        <th>
+            Integridad
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Valor
+        </th>
+        <th>
+            Justificación
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigoActivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreActivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcionActivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.propietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.protector)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaActivo.area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confidencialidad1.nivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponibilidad1.nivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Integridad1.nivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoActivo1.tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valoracion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.justificacion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.codigoActivo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.codigoActivo })
+            </td>
+        </tr>
+    }
+
+</table>

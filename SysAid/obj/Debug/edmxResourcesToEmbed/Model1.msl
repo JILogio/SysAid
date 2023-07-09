@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ValoracionActivosModelStoreContainer" CdmEntityContainer="ValoracionActivosEntities">
+    <EntitySetMapping Name="Amenaza">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.Amenaza">
+        <MappingFragment StoreEntitySet="Amenaza">
+          <ScalarProperty Name="idAmenaza" ColumnName="idAmenaza" />
+          <ScalarProperty Name="origen" ColumnName="origen" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="probabilidad" ColumnName="probabilidad" />
+          <ScalarProperty Name="impacto" ColumnName="impacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AreaActivo">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.AreaActivo">
+        <MappingFragment StoreEntitySet="AreaActivo">
+          <ScalarProperty Name="idAreaActivo" ColumnName="idAreaActivo" />
+          <ScalarProperty Name="area" ColumnName="area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Confidencialidad">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.Confidencialidad">
+        <MappingFragment StoreEntitySet="Confidencialidad">
+          <ScalarProperty Name="idConfidencialidad" ColumnName="idConfidencialidad" />
+          <ScalarProperty Name="nivelConfidencialidad" ColumnName="nivelConfidencialidad" />
+          <ScalarProperty Name="nivel" ColumnName="nivel" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Controles">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.Controles">
+        <MappingFragment StoreEntitySet="Controles">
+          <ScalarProperty Name="idControl" ColumnName="idControl" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disponibilidad">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.Disponibilidad">
+        <MappingFragment StoreEntitySet="Disponibilidad">
+          <ScalarProperty Name="idDisponibilidad" ColumnName="idDisponibilidad" />
+          <ScalarProperty Name="nivelDisponibilidad" ColumnName="nivelDisponibilidad" />
+          <ScalarProperty Name="nivel" ColumnName="nivel" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Integridad">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.Integridad">
+        <MappingFragment StoreEntitySet="Integridad">
+          <ScalarProperty Name="idIntegridad" ColumnName="idIntegridad" />
+          <ScalarProperty Name="nivelIntegridad" ColumnName="nivelIntegridad" />
+          <ScalarProperty Name="nivel" ColumnName="nivel" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListadoActivos">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.ListadoActivos">
+        <MappingFragment StoreEntitySet="ListadoActivos">
+          <ScalarProperty Name="codigoActivo" ColumnName="codigoActivo" />
+          <ScalarProperty Name="nombreActivo" ColumnName="nombreActivo" />
+          <ScalarProperty Name="descripcionActivo" ColumnName="descripcionActivo" />
+          <ScalarProperty Name="propietario" ColumnName="propietario" />
+          <ScalarProperty Name="protector" ColumnName="protector" />
+          <ScalarProperty Name="tipoActivo" ColumnName="tipoActivo" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="integridad" ColumnName="integridad" />
+          <ScalarProperty Name="disponibilidad" ColumnName="disponibilidad" />
+          <ScalarProperty Name="confidencialidad" ColumnName="confidencialidad" />
+          <ScalarProperty Name="justificacion" ColumnName="justificacion" />
+          <ScalarProperty Name="valoracion" ColumnName="valoracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListadoRiesgo">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.ListadoRiesgo">
+        <MappingFragment StoreEntitySet="ListadoRiesgo">
+          <ScalarProperty Name="idListadoRiesgo" ColumnName="idListadoRiesgo" />
+          <ScalarProperty Name="codigoActivo" ColumnName="codigoActivo" />
+          <ScalarProperty Name="idVulnerabilidad" ColumnName="idVulnerabilidad" />
+          <ScalarProperty Name="idAmenaza" ColumnName="idAmenaza" />
+          <ScalarProperty Name="idControl" ColumnName="idControl" />
+          <ScalarProperty Name="riesgo" ColumnName="riesgo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoActivo">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.TipoActivo">
+        <MappingFragment StoreEntitySet="TipoActivo">
+          <ScalarProperty Name="idTipoActivo" ColumnName="idTipoActivo" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vulnerabilidad">
+      <EntityTypeMapping TypeName="ValoracionActivosModel.Vulnerabilidad">
+        <MappingFragment StoreEntitySet="Vulnerabilidad">
+          <ScalarProperty Name="idVulnerabilidad" ColumnName="idVulnerabilidad" />
+          <ScalarProperty Name="tipoActivo" ColumnName="tipoActivo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

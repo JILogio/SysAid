@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SysAid.Amenaza>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Amenaza</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Origen
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Probabilidad
+        </th>
+        <th>
+            Impacto
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.probabilidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.impacto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idAmenaza }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idAmenaza })
+        </td>
+    </tr>
+}
+
+</table>

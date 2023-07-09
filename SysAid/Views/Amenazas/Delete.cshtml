@@ -1,0 +1,56 @@
+﻿@model SysAid.Amenaza
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Esta seguro que desea eliminar?</h3>
+<div>
+    <h4>Amenaza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.probabilidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.probabilidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impacto)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

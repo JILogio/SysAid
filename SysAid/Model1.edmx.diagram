@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="85c488c5014c4fdb99b526330464222a" Name="Diagram1">
+        <EntityTypeShape EntityType="ValoracionActivosModel.Amenaza" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.AreaActivo" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.Confidencialidad" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.Controles" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.Disponibilidad" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.Integridad" Width="1.5" PointX="0.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.ListadoActivos" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.ListadoRiesgo" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.TipoActivo" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValoracionActivosModel.Vulnerabilidad" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_amenaza" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_ididArea" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_idConfidencialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_control" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_idDisponibilidad" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_idIntegridad" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_activo" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_idTipoActivo" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_vulnerable" ManuallyRouted="false" />
+        <AssociationConnector Association="ValoracionActivosModel.fk_Vulne_tipo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

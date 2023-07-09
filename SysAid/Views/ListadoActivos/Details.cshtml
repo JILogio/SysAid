@@ -1,0 +1,106 @@
+﻿@model SysAid.ListadoActivos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ListadoActivos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreActivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreActivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcionActivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcionActivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propietario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propietario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.protector)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.protector)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.justificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.justificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valoracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valoracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaActivo.area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaActivo.area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Confidencialidad1.nivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Confidencialidad1.nivel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponibilidad1.nivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponibilidad1.nivel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Integridad1.nivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Integridad1.nivel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoActivo1.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoActivo1.tipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.codigoActivo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
